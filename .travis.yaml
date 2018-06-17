@@ -1,0 +1,14 @@
+language: python
+python:
+  - "2.7"
+  - "3.4"
+  - "3.5"
+
+# Install dependencies
+install:
+    - "pip install -r example/requirements.txt"
+    - "pip install coverage coveralls"
+
+script: coverage run --source='.' example/manage.py test django_cowhite_blog
+
+after_success: coveralls
