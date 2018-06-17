@@ -19,4 +19,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('django_cowhite_blog.urls', namespace="django-cowhite-blog")),
+    url(r'^pages/', include('django.contrib.flatpages.urls')),
 ]

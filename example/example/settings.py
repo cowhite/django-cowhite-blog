@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'django.contrib.humanize',
+    'django.contrib.flatpages',
 
     'django_cowhite_blog',
 ]
@@ -129,3 +131,5 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = os.path.join(STATIC_URL, "media/")
 MEDIA_ROOT = os.path.join(BASE_DIR, "staticfiles/media")
+SITE_ID = 1
+
