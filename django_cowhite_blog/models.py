@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django.conf import settings
 
 
 PUBLISH_STATUS_CHOICE_DRAFT = 'D'
@@ -43,11 +44,18 @@ class Category(DateTimeBase):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=500, unique=True)
 
+    def __unicode__(self):
+        return u"%s" % self.title
+
+    def __str__(self):
+        return "%s" % self.title
 
 
 class BlogPost(DateTimeBase):
     title = models.CharField(max_length=500)
     slug = models.SlugField(max_length=500, unique=True, blank=True)
+    cover_image = models.ImageField(
+        upload_to='blog_post_images', null=True, blank=True)
     content = models.TextField()
     categories = models.ManyToManyField(Category, blank=True)
     status = models.CharField(
@@ -56,6 +64,7 @@ class BlogPost(DateTimeBase):
     published_date = models.DateTimeField(null=True, blank=True)
     allow_comments = models.BooleanField(default=True)
     related_posts = models.ManyToManyField('BlogPost', blank=True)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL)
 
     # SEO
     seo_title = models.CharField(max_length=500,
@@ -67,6 +76,12 @@ class BlogPost(DateTimeBase):
     seo_keywords = models.TextField(null=True, blank=True,
         help_text='Optional. This is not auto generated. The filled content will be'
         'inserted in meta keywords tag')
+
+    def __unicode__(self):
+        return u"%s" % self.title
+
+    def __str__(self):
+        return "%s" % self.title
 
     def save(self, *args, **kwargs):
         if not self.slug:

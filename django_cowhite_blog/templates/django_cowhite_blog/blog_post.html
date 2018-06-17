@@ -1,0 +1,25 @@
+{% extends 'django_cowhite_blog/base.html' %}
+
+{% load humanize %}
+
+{% block meta_title %}
+Blog
+{% endblock %}
+
+{% block content %}
+<div class='heading'>{{ blog_post.title }}</div>
+
+<div class='blog'>
+  <div class='author-info'>Posted by {{ blog_post.author.first_name }} {{ blog_post.created_at|naturaltime }}</div>
+  {% if blog_post.cover_image %}
+  <div class='cover-image'>
+    <img src="{{ blog_post.cover_image.url }}" />
+  </div>
+  {% endif %}
+
+  <div class='post-content'>
+    {{ blog_post.content|safe }}
+  </div>
+</div>
+
+{% endblock %}

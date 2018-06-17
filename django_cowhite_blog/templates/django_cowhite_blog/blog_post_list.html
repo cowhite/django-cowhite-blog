@@ -1,0 +1,28 @@
+{% extends 'django_cowhite_blog/base.html' %}
+
+{% load humanize %}
+
+{% block meta_title %}
+Blog
+{% endblock %}
+
+{% block content %}
+<div class='heading'>Blog</div>
+
+{% for blog in blog_posts %}
+<div class='blog'>
+  <div class='title'>
+    <a class='read-more' href="{% url 'django-cowhite-blog:blog-post' blog.slug %}">
+    {{ blog.title }}</a>
+  </div>
+  <div class='author-info'>Posted by {{ blog.author.first_name }} {{ blog.created_at|naturaltime }}</div>
+  <div class='post-summary'>
+    {{ blog.seo_description|safe }}
+  </div>
+  <div>
+    <a class='read-more' href="{% url 'django-cowhite-blog:blog-post' blog.slug %}">Read more</a>
+  </div>
+</div>
+{% endfor %}
+
+{% endblock %}

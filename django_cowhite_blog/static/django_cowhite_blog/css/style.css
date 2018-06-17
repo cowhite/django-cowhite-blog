@@ -1,0 +1,50 @@
+@font-face {
+    font-family: Roboto-Regular;
+    src: url(/static/django_cowhite_blog/fonts/Roboto/Roboto-Regular.ttf);
+}
+body, html {
+  font-size: font-size: 100%;
+  font-family: Roboto-Regular, sans-serif;
+}
+body a {
+  color: #e94e3c;
+}
+#main-content {
+  min-height: 70vh;
+}
+.blog {
+  padding: 15px 0;
+  border-bottom: 1px solid #c1c1c1;
+}
+.blog:last-child {
+  border-bottom: 0;
+}
+.blog .cover-image {
+  text-align: center;
+}
+.blog .cover-image img {
+  height: 200px;
+  padding: 10px 0;
+}
+.blog .title {
+  color: #e94e3c;
+  font-weight: bold;
+}
+.blog .author-info {
+  font-weight: bold;
+}
+.blog .post-summary {
+  margin-top: 10px;
+}
+.heading {
+  font-size: 3rem;
+  padding: 15px;
+  text-align: center;
+  color: green;
+}
+footer {
+  margin-top: 50px;
+  padding: 50px 0;
+  text-align: center;
+  border-top: 1px solid #c1c1c1;
+}
