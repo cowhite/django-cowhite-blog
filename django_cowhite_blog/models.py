@@ -61,7 +61,7 @@ class BlogPost(DateTimeBase):
     status = models.CharField(
         choices=PUBLISH_STATUS_CHOICES, max_length=1,
         default=PUBLISH_STATUS_CHOICE_DRAFT)
-    published_date = models.DateTimeField(null=True, blank=True)
+    published_date = models.DateTimeField(null=True, blank=True, auto_now_add=True)
     allow_comments = models.BooleanField(default=True)
     related_posts = models.ManyToManyField('BlogPost', blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL)

@@ -15,7 +15,7 @@ class BlogPostListView(generic_views.TemplateView):
 
         blog_posts = BlogPost.objects.filter(status=PUBLISH_STATUS_CHOICE_PUBLISHED)
 
-        paginator = Paginator(blog_posts, 2) # Show 25 contacts per page
+        paginator = Paginator(blog_posts, 10) # Show 25 contacts per page
 
         page = self.request.GET.get('page')
 
